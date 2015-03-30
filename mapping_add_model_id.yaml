@@ -1,0 +1,35 @@
+description: "Just adds a generated model_id as that is not in the CSV (just XML)"
+columnMapping:
+  -
+    type: "copyFromOriginal"
+  - 
+    # model_id is created to be used as the grouping column
+    # (if we have the data from the XML we can use the actual model ID and deprecate this extra step)
+    type: "addColumn"
+    toCol: "model_identifier"
+    valueTransformers: 
+      - 
+        type: "multipartString"
+        parts: 
+          - # the category ID (to make sure product variants don't span categories). Using the ID because category names are not unique in the category tree
+            fromCol: "Category_ID"
+          - 
+            valueTransformers:
+              - 
+                type: "constant"
+                value: "_"
+          - # the manufacturer name (instead of ID to get a marketing view and easier debugging)  TODO lowercase
+            fromCol: "Name"
+            valueTransformers:
+              - 
+                type: "slugify"
+          - 
+            valueTransformers:
+              - 
+                type: "constant"
+                value: "_"
+          - # the model name TODO slugify
+            fromCol: "model_name"
+            valueTransformers:
+              - 
+                type: "slugify"

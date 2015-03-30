@@ -1,0 +1,238 @@
+---
+  description: "Icecat-SPHERE Mapping (no fact sheet attributes, just what's in the urls_rich feed)"
+  # TODO: do the product variants need to be directly adjacent?  How else would the import detect variants that belong together? 
+  groupColumn: 
+   col: "model_identifier" 
+   type: "constant"
+  columnMapping: 
+    # - 
+    #   type: "copyFromOriginal"
+    #   excludeCols: 
+    #     # please keep all original columns listed as reference, just comment out and in
+    #     - "product_id"
+    #     - "prod_id"
+    #     - "Quality"
+    #     - "URL"
+    #     - "supplier_id"
+    #     - "High_res_img"
+    #     - "Low_res_img"
+    #     - "Thumbnail_img"
+    #     - "UNCATID"
+    #     - "Category_ID
+    #     - "m_prod_id"
+    #     - "ean_upcs"
+    #     - "model_name"
+    #     - "original_supplier_id"
+    #     - "product_view"
+    #     - "on_market"
+    #     - "country_market_set"
+    #     - "Updated"
+    #     - "supplier_id"
+    #     - "Name"
+    #     - "catid"
+    #     - "value"
+    #     - "sphere_model_id"
+    - 
+      # the slug is our self generated product (=poor man's icecat model) identifier and sort criterion
+      type: "addColumn"
+      fromCol: "model_identifier"
+      toCol: "slug"
+    - 
+      # variantId needs to be generated ascending (never change this)
+      type: "addColumn"
+      toCol: "variantId"
+      valueTransformers: 
+        - 
+          type: "groupCounter"
+          startAt: 1
+    - 
+      # "sku" is a required built-in field. We use the icecat internal ID 
+      # Attention: product_id is not unique in the CSV index files (copies for synonymous manufacturer ids), just in XML
+      # by frequency analysis (21-19-19-18-17):
+      # these seem to go 1:1: m_prod_id, the EAN/UPC list, the icecat XML sheet URL, AND the icecat ID (used as sku)
+      # stuff like this are the marketing synonymous manufacturer ids:
+      # F1R80AW
+      # F1R80AW#AB7
+      # F1R80AW#AB8
+      type: "transformColumn"
+      fromCol: "product_id"
+      toCol: "sku"
+    - 
+      # productType is a required and built-in field. generate with fixed value if there's just one type.
+      type: "addColumn"
+      toCol: "productType"
+      valueTransformers: 
+        - 
+          type: "constant"
+          value: "simpleIcecatProduct"
+    - 
+      # "name" is a translatable required and built-in field. 
+      type: "transformColumn"
+      fromCol: "model_name"
+      toCol: "name.en"
+    # - 
+    #   # "description" is a translatable built-in field.
+    #   type: "transformColumn"
+    #   fromCol: "Style_LongDesc"
+    #   toCol: "description.de"
+    - 
+      type: "transformColumn"
+      fromCol: "Name"
+      toCol: "manufacturer_name"
+    - 
+      type: "transformColumn"
+      fromCol: "supplier_id"
+      toCol: "manufacturer_icecat_id"
+    - 
+      # FYI the difference to "supplier_id" seems minimal
+      type: "transformColumn"
+      fromCol: "original_supplier_id"
+      toCol: "manufacturer_icecat_original_id"
+    - 
+      # "long" manufacturer product ID (many of these identify the same icecat product)
+      type: "transformColumn"
+      fromCol: "prod_id"
+      toCol: "manufacturer_product_id"
+    - 
+      # manufacturer product id that's aligned with icecat product ids
+      type: "transformColumn"
+      fromCol: "m_prod_id"
+      toCol: "manufacturer_product_id_normal"
+    - 
+      type: "transformColumn"
+      fromCol: "ean_upcs"
+      toCol: "ean_upc_set"
+    - 
+      # "images" is a built-in field that should contain a semicolon-separated list of image URLs in the biggest available size. 
+      # Icecat: just one image (the biggest one)
+      type: "transformColumn"
+      fromCol: "High_res_img"
+      toCol: "images"      
+    - 
+      type: "transformColumn"
+      fromCol: "Low_res_img"
+      toCol: "image_url_small"
+    - 
+      type: "transformColumn"
+      fromCol: "Thumbnail_img"
+      toCol: "image_url_thumb"
+    - 
+      type: "transformColumn"
+      fromCol: "value"
+      toCol: "category_name.en"
+    - 
+      type: "transformColumn"
+      fromCol: "Category_ID"
+      toCol: "category_icecat_id"
+    # - 
+    #   # can be left out, is a duplicate to Category_ID
+    #   type: "transformColumn"
+    #   fromCol: "catid"
+    #   toCol: "category_icecat_id"
+    - 
+      type: "transformColumn"
+      fromCol: "UNCATID"
+      toCol: "category_uncat_it"
+    - 
+      # "categories" is a built-in field in the format "Category>SameSubCategory". Multiple semicolon-separated entries are possible (but icecat is a unique taxonomy).
+      # You can also just use the category name as long as it is unqiue within the whole category tree. 
+      # In addtion, the category ID (UUID) can also be used.
+      # Category_ID contains the catid, "value" contains the category name
+      type: "addColumn"
+      fromCol: "value"
+      toCol: "categories"
+    #- 
+      # "prices" is a built-in filed name. target value needs to be in "EUR 9999; EUR 8999 salePrice; EUR 12000 MSRP" format e.g. if 99,99 is the regular price and there are two more named prices.
+      #type: "addColumn"
+      #toCol: "prices"
+      #valueTransformers: 
+      #  - 
+      #    type: "multipartString"
+      #    parts: 
+      #      - 
+      #        fromCol: "SKU_SellingPrice"
+      #        valueTransformers: 
+      #          - 
+      #            type: "regexp"
+      #            find: "^(\\d+),(\\d{2})"
+      #            replace: "EUR $1$2"
+    - 
+      # tax is a required and built-in field. generate with "default" if not in the source data
+      type: "addColumn"
+      toCol: "tax"
+      valueTransformers: 
+        - 
+          type: "constant"
+          value: "default"
+    - 
+      type: "transformColumn"
+      fromCol: "Quality"
+      toCol: "icecat_data_quality"
+    # -
+    #   # an always empty column 
+    #   type: "transformColumn"
+    #   fromCol: "product_view"
+    #   toCol: "icecat_product_view_xxx"
+    - 
+      type: "transformColumn"
+      toCol: "icecat_factsheet_url"
+      valueTransformers: 
+        - 
+          type: "multipartString"
+          parts: 
+            - 
+              fromCol: "URL"
+            - 
+              valueTransformers:
+                - 
+                  type: "constant"
+                  value: ";shopname=nikolauskuehn"
+    - 
+      type: "transformColumn"
+      toCol: "icecat_xml_data_url"
+      valueTransformers: 
+        - 
+          type: "multipartString"
+          parts: 
+            - 
+              valueTransformers:
+                - 
+                  type: "constant"
+                  value: "http://data.icecat.biz/export/freexml/INT/"  # in paid accounts "freexml" can be exchanged for "level4"
+            - 
+              fromCol: "product_id"
+            - 
+              valueTransformers:
+                - 
+                  type: "constant"
+                  value: ".xml"                  
+    - 
+      type: "transformColumn"
+      fromCol: "on_market"
+      toCol: "on_market"
+      # valueTransformers: 
+      #   - 
+      #     type: "lookup"
+      #     values: 
+      #       - 
+      #         - "1"
+      #         - "true"
+      #       - 
+      #         - "0"
+      #         - "false"
+    - 
+      type: "transformColumn"
+      fromCol: "country_market_set"
+      toCol: "on_market_countries_set"   
+    - 
+      # date formats need to be converted to our IUSO format:
+      # Icecat format example: 20140527134728    2014 05 27 13:47:28
+      type: "transformColumn"
+      fromCol: "Updated"
+      toCol: "icecat_last_updated"
+      valueTransformers: 
+        - 
+          type: "regexp"
+          find: "\\s*(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})\\s*"
+          replace: "$1-$2-$3T$4:$5:$6.000Z"
+

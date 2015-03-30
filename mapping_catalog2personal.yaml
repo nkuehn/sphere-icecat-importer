@@ -1,0 +1,33 @@
+---
+  description: "Creates a personal icecat index file for upload from the full catalog"
+  columnMapping: 
+    - 
+      type: "transformColumn"
+      fromCol: "Name"
+      toCol: "manufacturerName"
+    - 
+      type: "transformColumn"
+      fromCol: "original_supplier_id"
+      toCol: "original_supplier_id"
+    - 
+      type: "transformColumn"
+      fromCol: "prod_id"
+      toCol: "prod_id"
+    - 
+      type: "transformColumn"
+      fromCol: "m_prod_id"
+      toCol: "m_prod_id"
+    - 
+      type: "transformColumn"
+      fromCol: "ean_upcs"
+      toCol: "ean_upcs"
+    # TODO grap first UPC from list (check icecat documentation first)
+    #- 
+    #  type: "transformColumn"
+    #  fromCol: "ean_upcs"
+    #  toCol: "ean_upcs"
+    #  valueTransformers: 
+    #    - 
+    #      type: "regexp"
+    #      find: "^(n+);?"
+    #      replace: "$1"

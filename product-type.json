@@ -1,0 +1,280 @@
+{
+      "name": "simpleIcecatProduct",
+      "description": "a product without domain specific attributes",
+      "classifier": "Complex",
+      "attributes": [
+        {
+          "name": "manufacturer_product_id_normal",
+          "label": {
+            "en": "Manufacturer Product ID"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "manufacturer_product_id",
+          "label": {
+            "en": "Manufacturer Prouduct ID (icecat index file)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "ean_upc_set",
+          "label": {
+            "en": "UPCs"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "set",
+            "elementType": {
+              "name": "text"
+            }
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "image_url_small",
+          "label": {
+            "en": "Image URL (small)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "image_url_thumb",
+          "label": {
+            "en": "Image URL (thumbnail)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "category_name",
+          "label": {
+            "en": "Category Name"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "ltext"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "category_icecat_id",
+          "label": {
+            "en": "Category (Icecat ID)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "number"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "category_uncat_it",
+          "label": {
+            "en": "Category (UNCATID)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "icecat_data_quality",
+          "label": {
+            "en": "Icecat Data Quality"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "enum",
+            "values": [
+              {
+                "key": "SUPPLIER",
+                "label": "Supplier CMS"
+              },
+              {
+                "key": "ICECAT",
+                "label": "Icecat Data Editors"
+              }
+            ]
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "on_market_countries_set",
+          "label": {
+            "en": "Available in Countries"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "set",
+            "elementType": {
+              "name": "text"
+            }
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "icecat_last_updated",
+          "label": {
+            "en": "Last updated by Icecat"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "datetime"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "attributes_set",
+          "label": {
+            "en": "Product Attributes"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "set",
+            "elementType": {
+              "name": "ltext"
+            }
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "MultiLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "on_market",
+          "label": {
+            "en": "On Market?"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "number"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "manufacturer_name",
+          "label": {
+            "en": "Manufacturer Name"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "SameForAll",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "manufacturer_icecat_id",
+          "label": {
+            "en": "Manufacturer (Icecat ID)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "number"
+          },
+          "attributeConstraint": "SameForAll",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "manufacturer_icecat_original_id",
+          "label": {
+            "en": "Original Manufacturer (Icecat ID)"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "number"
+          },
+          "attributeConstraint": "SameForAll",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "icecat_factsheet_url",
+          "label": {
+            "en": "Icecat HTML Factsheet URL"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "icecat_xml_data_url",
+          "label": {
+            "en": "Icecat XML datasheet URL"
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        }
+      ],
+      "createdAt": "2015-03-30T08:13:38.246Z",
+      "lastModifiedAt": "2015-03-30T11:44:11.815Z"
+    }
