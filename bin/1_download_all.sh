@@ -3,22 +3,22 @@
 mkdir ../downloaded
 cd ../downloaded
 
-curl -u nikolauskuehn:spheredemo11 -o categorization_1.txt.gz  http://data.icecat.biz/export/freeurls/categorization_1.txt.gz
-curl -u nikolauskuehn:spheredemo11 -o category.txt.utf8.gz http://data.icecat.biz/export/freeurls/category.txt.utf8.gz
-curl -u nikolauskuehn:spheredemo11 -o category_keywords.txt.utf8.gz http://data.icecat.biz/export/freeurls/category_keywords.txt.utf8.gz
-curl -u nikolauskuehn:spheredemo11 -o feature.txt.utf8.gz http://data.icecat.biz/export/freeurls/feature.txt.utf8.gz
-curl -u nikolauskuehn:spheredemo11 -o category_feature.txt.utf8.gz http://data.icecat.biz/export/freeurls/category_feature.txt.utf8.gz
-curl -u nikolauskuehn:spheredemo11 -o feature_group.txt.utf8.gz http://data.icecat.biz/export/freeurls/feature_group.txt.utf8.gz 
-curl -u nikolauskuehn:spheredemo11 -o category_feature_group.txt.utf8.gz http://data.icecat.biz/export/freeurls/category_feature_group.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o categorization_1.txt  http://data.icecat.biz/export/freeurls/categorization_1.txt
+curl -u nikolauskuehn:spheredemo11 -o category.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/category.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o category_keywords.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/category_keywords.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o feature.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/feature.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o category_feature.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/category_feature.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o feature_group.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/feature_group.txt.utf8.gz 
+curl -u nikolauskuehn:spheredemo11 -o category_feature_group.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/category_feature_group.txt.utf8.gz
 
-curl -u nikolauskuehn:spheredemo11 -o tex.txt.utf8.gz http://data.icecat.biz/export/freeurls/tex.txt.utf8.gz
-curl -u nikolauskuehn:spheredemo11 -o vocabulary.txt.utf8.gz http://data.icecat.biz/export/freeurls/vocabulary.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o tex.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/tex.txt.utf8.gz
+curl -u nikolauskuehn:spheredemo11 -o vocabulary.txt.utf8.gz https://data.icecat.biz/export/freexml.int/csv/vocabulary.txt.utf8.gz
 
 curl -u nikolauskuehn:spheredemo11 -o export_suppliers.txt http://data.icecat.biz/export/freeurls/export_suppliers.txt
 
 curl -u nikolauskuehn:spheredemo11 -o on_market.export_urls_rich.txt.gz http://data.icecat.biz/export/freeurls/on_market.export_urls_rich.txt.gz
 
-gunzip *
+gunzip -f -v *.gz
 
 mkdir ../transformed
 

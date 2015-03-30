@@ -1,4 +1,8 @@
 downloaded/*
 transformed/*
 generated/*
+downloaded_archive/*
+transformed_archive/*
+generated_archive/*
 bin/6_sync_sphere_all-MYPROJECT.sh
+.DS_Store

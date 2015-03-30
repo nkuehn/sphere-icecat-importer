@@ -6,7 +6,7 @@ The initial state will not yet create product types with "real" SPHERE.IO attrib
 
 YOU DO NEED TO ADD PROJECT CREDENTIALS TO THE ./bin/6_sync_sphere_all.sh script! 
 
-If you are using an own test project, you need to manually create tax categories etc. with name "default" and then create the product type via impex.sphere.io using the product-type.json file in this directory. 
+If you are using an own test project, you need to manually create tax categories etc. with name "default",  create the product type via impex.sphere.io using the product-type.json file in this directory and create the category/ies manually with matching names. 
  
 Next steps on the list:
 

@@ -30,7 +30,7 @@
     #     - "supplier_id"
     #     - "Name"
     #     - "catid"
-    #     - "value"
+    #     - "category_name.en"
     #     - "sphere_model_id"
     - 
       # the slug is our self generated product (=poor man's icecat model) identifier and sort criterion
@@ -118,7 +118,7 @@
       toCol: "image_url_thumb"
     - 
       type: "transformColumn"
-      fromCol: "value"
+      fromCol: "category_name.en"
       toCol: "category_name.en"
     - 
       type: "transformColumn"
@@ -139,7 +139,7 @@
       # In addtion, the category ID (UUID) can also be used.
       # Category_ID contains the catid, "value" contains the category name
       type: "addColumn"
-      fromCol: "value"
+      fromCol: "category_name.en"
       toCol: "categories"
     #- 
       # "prices" is a built-in filed name. target value needs to be in "EUR 9999; EUR 8999 salePrice; EUR 12000 MSRP" format e.g. if 99,99 is the regular price and there are two more named prices.
