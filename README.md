@@ -10,22 +10,21 @@ If you are using an own test project, you need to manually create tax categories
  
 Next steps on the list:
 
- 1.  get cvs-mapper to a performance level that allows importing the full file
  1. implement category import based on halo's reimplementation (categories are a flat list here)
  1. Daily incremental updates 
- 1. set up a decent shopfront example with faceted search etc.  
+ 1. set up a decent shopfront example  
  1. Multilanguage (probably requires a more efficient technique than csvjoin)
- 1. download the XML sheets and add the actual product facts into the generic "Product Attributes" set attribute. 
+ 1. (maybe) download the XML sheets and add the actual product facts into the generic "Product Attributes" set attribute -> requires incremental update implementation
  1. (maybe) generate product types from the metadata (will be 1:1 to categories) and import the Product attributes into real category-specific attributes. 
 
 
 ## caveats
  * the product variant grouping is not done via the "official" icecat 
-"Model" but via a self-generated slug from category, manufacturer and name.  This is because the icecat model name is only in the XML sheets and the current implementation does not download these yet. 
+"Model" but via a self-generated slug from category, manufacturer and name.  This is because the icecat model name is only in the XML sheets and the current implementation does not download these. 
      
 ## prerequisites
 
-to run on Mac OS X you need the following prerequisites (install commands)
+to run on Mac OS X you need 1-2 GB free RAM and the following prerequisites in an up-to-date version (install commands)
 
 ```
 brew install python
@@ -43,5 +42,3 @@ The shell scripts in the /bin folder are numbered and should be executed in that
 the products are completely deleted from the SPHERE project and then recreated. 
 
 this may take a long time. you have been warned
-
-## WTF?
