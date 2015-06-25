@@ -5,6 +5,7 @@ cd ../transformed
 mkdir ../generated
 
 # because csv-mapper can't use columns as groupColumn that are generated in the same step we first generate a CSV with a group id:
+# TODO remove once that can be done in a single step
 csv-mapper -m ../mapping_add_model_id.yaml --inCsv on_market.products_rich.withSupplierNames.withCategoryNames.csv --outCsv on_market.4sphere.csv 
 csv-mapper -m ../mapping_add_model_id.yaml --inCsv on_market.products_rich.notebooksWithAll.csv --outCsv on_market.4sphere.notebooks.csv
 

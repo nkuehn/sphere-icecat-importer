@@ -21,8 +21,6 @@ csvgrep --encoding utf8 -c langid -r "^6$" vocabulary.csv | csvcut -c sid,value 
 # (the minus sign references to STDIN in csvjoin)
 csvjoin -c sid category.csv vocabulary_en.csv | sed "1s/,sid,value/,sid.en,category_name.en/" | csvjoin -c tid --left - tex_en.csv | sed "1s/,tid,value/,tid.en,category_description.en/" > category_en.csv
 
-# TODO: add more / all languages via "lookup" in the csv-mapper?
-
 # create a minimal names index for joining into products (until we have real categories in SPHERE and also for debugging)
 # TODO "Column identifier "value" is neither an integer, nor a existing column's name."
 csvcut -c catid,category_name.en category_en.csv > categoryNames_en.csv

@@ -3,18 +3,14 @@
 the goal of this set of scripts is to generate a set of CSV files suitable for import into a SPHERE.IO project that contain a subset of the icecat.biz open catalog. 
 
 The initial state will not yet create product types with "real" SPHERE.IO attributes but just require a generic product type. 
-
-YOU DO NEED TO ADD PROJECT CREDENTIALS TO THE ./bin/6_sync_sphere_all.sh script! 
-
-If you are using an own test project, you need to manually create tax categories etc. with name "default",  create the product type via impex.sphere.io using the product-type.json file in this directory and create the category/ies manually with matching names. 
  
-Next steps on the list:
+Next steps on the list (next to fixing the github issues and TODOs)
 
- 1. implement category import based on halo's reimplementation (categories are a flat list here)
+ 1. implement category import based on halo's reimplementation (categories are a flat list here) once it can read the tree
  1. move category mapping to externalId once product import supports that
- 1. incremental updates using the 
  1. set up a decent shopfront example  and make sure it's "noindex" for/against google
- 1. Multilanguage 
+ 1. Multilanguage also for products (maybe add more columns in separate import steps instead of joining everything into the big CSV?)
+ 1. incremental updates using the daily incremental feed
  1. try to get a price feed from icecat (they have a price comparison functionality)
  1. (maybe) download the XML sheets and add the actual product facts into the generic "Product Attributes" set attribute -> requires incremental update implementation
  1. (maybe) generate product types from the metadata (will be 1:1 to categories) and import the Product attributes into real category-specific attributes. 
@@ -40,6 +36,9 @@ npm install sphere-category-sync
 
 ## prepare a SPHERE project
  * need "en" as language and ideally the following countries: EN,NL,FR,DE,IT,ES
+ * create tax categories etc. with name "default", 
+ * create the product type via impex.sphere.io using the product-type.json file in this directory
+ * YOU DO NEED TO ADD PROJECT CREDENTIALS TO THE ./bin/6_sync_sphere_all.sh script! 
 
 ## run
 

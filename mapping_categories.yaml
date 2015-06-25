@@ -27,6 +27,12 @@
       type: "transformColumn"
       fromCol: "pcatid"
       toCol: "parentId"
+      valueTransformers:
+        -
+        # replace every "1" (which is the root category but is not in the feed) with nothing.
+          type: "regexp"
+          find: "^((?!1$).*)$"
+          replace: "$1"
     -
       type: "transformColumn"
       fromCol: "catid"
@@ -40,10 +46,11 @@
       type: "transformColumn"
       fromCol: "category_name.en"
       toCol: "name.en"
-    -
-      type: "transformColumn"
-      fromCol: "category_description.en"
-      toCol: "description.en"
+# TODO commented out to avoid out of memory error of the csv mapper AND because the content is too long for csvsort.
+#    -
+#      type: "transformColumn"
+#      fromCol: "category_description.en"
+#      toCol: "description.en"
     -
       type: "addColumn"
       toCol: "slug.en"
@@ -75,17 +82,18 @@
           keyCol: "sid"
           valueCol: "value"
           file: "../transformed/vocabulary_de.csv"
-    -
-      type: "transformColumn"
-      fromCol: "tid"
-      toCol: "description.de"
-      valueTransformers:
-        -
-          type: "lookup"
-          header: true
-          keyCol: "tid"
-          valueCol: "value"
-          file: "../transformed/tex_de.csv"
+# TODO commented out to avoid out of memory error of the csv mapper AND because of too long strings to sort via csvsort
+#    -
+#      type: "transformColumn"
+#      fromCol: "tid"
+#      toCol: "description.de"
+#      valueTransformers:
+#        -
+#          type: "lookup"
+#          header: true
+#          keyCol: "tid"
+#          valueCol: "value"
+#          file: "../transformed/tex_de.csv"
     -
       type: "addColumn"
       toCol: "slug.de"
