@@ -20,7 +20,7 @@ csvjoin -c Category_ID,catid --left on_market.products_rich.withSupplierNames.cs
 # (commented out as the feature is not capable for such big datasets on icecat side)
 # csvcut -c Name,prod_id,ean_upcs,Thumbnail_img,on_market on_market.products_rich.withSupplierNames.withCategoryNames.csv > personal_index.csv
 
-# grep two specific categories to get a filesize that works. 
+# grep two specific categories to get a filesize that's more manageable for testing
 # to see category IDs do:
 # csvgrep -c name.en -m notebook transformed/categoryNames_EN.csv | csvlook | less
 # -> cat 151 = notebooks

@@ -1,7 +1,10 @@
 #!/bin/sh
 
-# TODO create csvmapper that creates category slug (slugified name plus icecatID) and externalId.  > category_sphere.csv
-# TODO do the whole categories thing once there is a new category importer
-# csvjson --indent 4  category_sphere.csv > category_sphere.json
+# sort by parent ID (and then ID?) and hope that that's enough to be able to build the tree (until category import can build the tree itself)
+csvsort -c pcatid,catid ../transformed/category_en.csv > category_en.sorted.csv
 
-# TODO implement me
+# TODO filter categories by "visible" (or enable import to take them as unpublished)
+
+# map categories as SPHERE import wants it.
+csv-mapper -m ../mapping_categories.yaml --inCsv ../transformed/category_en.csv  --outCsv ../generated/categories.4sphere.csv
+

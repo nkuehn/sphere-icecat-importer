@@ -30,7 +30,7 @@ csvformat --tabs --encoding utf8 category_feature.txt.utf8 > ../transformed/cate
 csvformat --tabs --encoding utf8 feature_group.txt.utf8 > ../transformed/feature_group.csv
 csvformat --tabs --encoding utf8 category_feature_group.txt.utf8 > ../transformed/category_feature_group.csv
 
-# TODO  tex file contains a null byte and may break stuff later on. 
+# FYI: tex file contains a null byte and may break stuff later on.
 csvformat --tabs --encoding utf8 tex.txt.utf8 > ../transformed/tex.csv
 csvformat --tabs --encoding utf8 vocabulary.txt.utf8 > ../transformed/vocabulary.csv
 csvformat --tabs export_suppliers.txt > ../transformed/export_suppliers.csv

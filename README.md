@@ -11,12 +11,13 @@ If you are using an own test project, you need to manually create tax categories
 Next steps on the list:
 
  1. implement category import based on halo's reimplementation (categories are a flat list here)
- 1. Daily incremental updates 
- 1. set up a decent shopfront example  
- 1. Multilanguage (probably requires a more efficient technique than csvjoin)
+ 1. move category mapping to externalId once product import supports that
+ 1. incremental updates using the 
+ 1. set up a decent shopfront example  and make sure it's "noindex" for/against google
+ 1. Multilanguage 
+ 1. try to get a price feed from icecat (they have a price comparison functionality)
  1. (maybe) download the XML sheets and add the actual product facts into the generic "Product Attributes" set attribute -> requires incremental update implementation
  1. (maybe) generate product types from the metadata (will be 1:1 to categories) and import the Product attributes into real category-specific attributes. 
-
 
 ## caveats
  * the product variant grouping is not done via the "official" icecat 
@@ -33,12 +34,15 @@ brew install node
 npm install sphere-product-type-json-generator
 npm install csv-mapper
 npm install sphere-node-product-csv-sync
+npm install sphere-category-sync
 
 ```
+
+## prepare a SPHERE project
+ * need "en" as language and ideally the following countries: EN,NL,FR,DE,IT,ES
+
 ## run
 
 The shell scripts in the /bin folder are numbered and should be executed in that order. 
 
-the products are completely deleted from the SPHERE project and then recreated. 
-
-this may take a long time. you have been warned
+Execution of this job will take a long time. you have been warned. 

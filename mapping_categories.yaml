@@ -1,0 +1,279 @@
+---
+  description: "Icecat-SPHERE Mapping of the categories"
+  columnMapping:
+  #-
+    # type: "copyFromOriginal"
+    # excludeCols:
+    #   # please keep all original columns listed as reference, just comment out and in
+    #   - "catid"  -> externalId // part of slug.en // orderHint
+    #   - "ucatid"
+    #   - "pcatid"  -> parentId
+    #   - "sid"
+    #   - "tid"
+    #   - "searchable"
+    #   - "low_pic"
+    #   - "thumb_pic"
+    #   - "updated"
+    #   - "last_published"
+    #   - "watched_top10"
+    #   - "visible"
+    #   - "ssid"
+    #   - "participate_in_title"
+    #   - "sid.en"
+    #   - "category_name.en"  -> name.en  // part of slug.en
+    #   - "tid.en"
+    #   - "category_description.en"  -> description.en
+    -
+      type: "transformColumn"
+      fromCol: "pcatid"
+      toCol: "parentId"
+    -
+      type: "transformColumn"
+      fromCol: "catid"
+      toCol: "externalId"
+    -
+      type: "transformColumn"
+      fromCol: "catid"
+      toCol: "orderHint"
+#  ENGLISH TEXTS
+    -
+      type: "transformColumn"
+      fromCol: "category_name.en"
+      toCol: "name.en"
+    -
+      type: "transformColumn"
+      fromCol: "category_description.en"
+      toCol: "description.en"
+    -
+      type: "addColumn"
+      toCol: "slug.en"
+      valueTransformers:
+        -
+          type: "multipartString"
+          parts:
+            -
+              fromCol: "catid"
+            -
+              valueTransformers:
+                -
+                  type: "constant"
+                  value: "_"
+            -
+              fromCol: "name.en"
+              valueTransformers:
+                -
+                  type: "slugify"
+#  GERMAN TEXTS
+    -
+      type: "transformColumn"
+      fromCol: "sid"
+      toCol: "name.de"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "sid"
+          valueCol: "value"
+          file: "../transformed/vocabulary_de.csv"
+    -
+      type: "transformColumn"
+      fromCol: "tid"
+      toCol: "description.de"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "tid"
+          valueCol: "value"
+          file: "../transformed/tex_de.csv"
+    -
+      type: "addColumn"
+      toCol: "slug.de"
+      valueTransformers:
+        -
+          type: "multipartString"
+          parts:
+            -
+              fromCol: "catid"
+            -
+              valueTransformers:
+                -
+                  type: "constant"
+                  value: "_"
+            -
+              fromCol: "name.de"
+              valueTransformers:
+                -
+                  type: "slugify"
+#  DUTCH TEXTS
+    -
+      type: "transformColumn"
+      fromCol: "sid"
+      toCol: "name.nl"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "sid"
+          valueCol: "value"
+          file: "../transformed/vocabulary_nl.csv"
+# TODO commented out to avoid out of memory error of the csv mapper
+#    -
+#      type: "transformColumn"
+#      fromCol: "tid"
+#      toCol: "description.nl"
+#      valueTransformers:
+#        -
+#          type: "lookup"
+#          header: true
+#          keyCol: "tid"
+#          valueCol: "value"
+#          file: "../transformed/tex_nl.csv"
+    -
+      type: "addColumn"
+      toCol: "slug.nl"
+      valueTransformers:
+        -
+          type: "multipartString"
+          parts:
+            -
+              fromCol: "catid"
+            -
+              valueTransformers:
+                -
+                  type: "constant"
+                  value: "_"
+            -
+              fromCol: "name.nl"
+              valueTransformers:
+                -
+                  type: "slugify"
+#  FRENCH TEXTS
+    -
+      type: "transformColumn"
+      fromCol: "sid"
+      toCol: "name.fr"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "sid"
+          valueCol: "value"
+          file: "../transformed/vocabulary_fr.csv"
+# TODO commented out to avoid out of memory error of the csv mapper
+#    -
+#      type: "transformColumn"
+#      fromCol: "tid"
+#      toCol: "description.fr"
+#      valueTransformers:
+#        -
+#          type: "lookup"
+#          header: true
+#          keyCol: "tid"
+#          valueCol: "value"
+#          file: "../transformed/tex_fr.csv"
+    -
+      type: "addColumn"
+      toCol: "slug.fr"
+      valueTransformers:
+        -
+          type: "multipartString"
+          parts:
+            -
+              fromCol: "catid"
+            -
+              valueTransformers:
+                -
+                  type: "constant"
+                  value: "_"
+            -
+              fromCol: "name.fr"
+              valueTransformers:
+                -
+                  type: "slugify"
+#  ITALIAN TEXTS
+    -
+      type: "transformColumn"
+      fromCol: "sid"
+      toCol: "name.it"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "sid"
+          valueCol: "value"
+          file: "../transformed/vocabulary_it.csv"
+# TODO commented out to avoid out of memory error of the csv mapper
+#    -
+#      type: "transformColumn"
+#      fromCol: "tid"
+#      toCol: "description.it"
+#      valueTransformers:
+#        -
+#          type: "lookup"
+#          header: true
+#          keyCol: "tid"
+#          valueCol: "value"
+#          file: "../transformed/tex_it.csv"
+    -
+      type: "addColumn"
+      toCol: "slug.it"
+      valueTransformers:
+        -
+          type: "multipartString"
+          parts:
+            -
+              fromCol: "catid"
+            -
+              valueTransformers:
+                -
+                  type: "constant"
+                  value: "_"
+            -
+              fromCol: "name.it"
+              valueTransformers:
+                -
+                  type: "slugify"
+#  SPANISH TEXTS
+    -
+      type: "transformColumn"
+      fromCol: "sid"
+      toCol: "name.es"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "sid"
+          valueCol: "value"
+          file: "../transformed/vocabulary_es.csv"
+# TODO commented out to avoid out of memory error of the csv mapper
+#    -
+#      type: "transformColumn"
+#      fromCol: "tid"
+#      toCol: "description.es"
+#      valueTransformers:
+#        -
+#          type: "lookup"
+#          header: true
+#          keyCol: "tid"
+#          valueCol: "value"
+#          file: "../transformed/tex_es.csv"
+    -
+      type: "addColumn"
+      toCol: "slug.es"
+      valueTransformers:
+        -
+          type: "multipartString"
+          parts:
+            -
+              fromCol: "catid"
+            -
+              valueTransformers:
+                -
+                  type: "constant"
+                  value: "_"
+            -
+              fromCol: "name.es"
+              valueTransformers:
+                -
+                  type: "slugify"
