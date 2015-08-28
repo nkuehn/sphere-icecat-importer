@@ -8,3 +8,4 @@ bin/6_sync_sphere_all-MYPROJECT.sh
 .DS_Store
 .idea
 node_modules/*
+on_market.4sphere.sorted.csv

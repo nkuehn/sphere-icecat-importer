@@ -124,23 +124,15 @@
       type: "transformColumn"
       fromCol: "Category_ID"
       toCol: "category_icecat_id"
-    # - 
-    #   # can be left out, is a duplicate to Category_ID
-    #   type: "transformColumn"
-    #   fromCol: "catid"
-    #   toCol: "category_icecat_id"
-    - 
+    -
       type: "transformColumn"
       fromCol: "UNCATID"
       toCol: "category_uncat_it"
     - 
-      # "categories" is a built-in field in the format "Category>SameSubCategory". Multiple semicolon-separated entries are possible (but icecat is a unique taxonomy).
-      # You can also just use the category name as long as it is unqiue within the whole category tree. 
-      # In addtion, the category ID (UUID) can also be used.
-      # Category_ID contains the catid, "value" contains the category name
-      # TODO migrate to externalID based mapping to the catid  instead of name-based mathching.
+      # "categories" is a built-in field in the format "Category>SameSubCategory" OR the externalId OR the slug.
+      # Multiple semicolon-separated entries are possible (but icecat is a unique taxonomy).
       type: "addColumn"
-      fromCol: "category_name.en"
+      fromCol: "catid"
       toCol: "categories"
     #- 
       # "prices" is a built-in filed name. target value needs to be in "EUR 9999; EUR 8999 salePrice; EUR 12000 MSRP" format e.g. if 99,99 is the regular price and there are two more named prices.
