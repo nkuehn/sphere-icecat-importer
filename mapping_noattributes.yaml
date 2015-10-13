@@ -37,6 +37,9 @@
       type: "addColumn"
       fromCol: "model_identifier"
       toCol: "slug"
+      valueTransformers:
+        -
+          type: "required"
     - 
       # variantId needs to be generated ascending (never change this)
       type: "addColumn"
@@ -57,6 +60,9 @@
       type: "transformColumn"
       fromCol: "product_id"
       toCol: "sku"
+      valueTransformers:
+        -
+          type: "required"
     - 
       # productType is a required and built-in field. generate with fixed value if there's just one type.
       type: "addColumn"
@@ -67,9 +73,21 @@
           value: "simpleIcecatProduct"
     - 
       # "name" is a translatable required and built-in field. 
-      type: "transformColumn"
-      fromCol: "model_name"
+      type: "addColumn"
+      # fromCol: "model_name"
       toCol: "name.en"
+      valueTransformers:
+        -
+          type: "fallback"
+          valueTransformers:
+            - 
+              type: "column"
+              col: "model_name"
+            - 
+              type: "column"
+              col: "product_id"
+        -
+          type: "required"
     # - 
     #   # "description" is a translatable built-in field.
     #   type: "transformColumn"

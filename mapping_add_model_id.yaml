@@ -18,7 +18,7 @@ columnMapping:
               - 
                 type: "constant"
                 value: "_"
-          - # the manufacturer name (instead of ID to get a marketing view and easier debugging)  TODO lowercase
+          - # the manufacturer name (instead of ID to get a marketing view and easier debugging)
             fromCol: "Name"
             valueTransformers:
               - 
@@ -28,7 +28,7 @@ columnMapping:
               - 
                 type: "constant"
                 value: "_"
-          - # the model name TODO slugify
+          - # the model name
             fromCol: "model_name"
             valueTransformers:
               - 
