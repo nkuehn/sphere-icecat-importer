@@ -46,11 +46,10 @@
       type: "transformColumn"
       fromCol: "category_name.en"
       toCol: "name.en"
-# TODO commented out to avoid out of memory error of the csv mapper AND because the content is too long for csvsort.
-#    -
-#      type: "transformColumn"
-#      fromCol: "category_description.en"
-#      toCol: "description.en"
+    -
+      type: "transformColumn"
+      fromCol: "category_description.en"
+      toCol: "description.en"
     -
       type: "addColumn"
       toCol: "slug.en"
@@ -82,18 +81,17 @@
           keyCol: "sid"
           valueCol: "value"
           file: "../transformed/vocabulary_de.csv"
-# TODO commented out to avoid out of memory error of the csv mapper AND because of too long strings to sort via csvsort
-#    -
-#      type: "transformColumn"
-#      fromCol: "tid"
-#      toCol: "description.de"
-#      valueTransformers:
-#        -
-#          type: "lookup"
-#          header: true
-#          keyCol: "tid"
-#          valueCol: "value"
-#          file: "../transformed/tex_de.csv"
+    -
+      type: "transformColumn"
+      fromCol: "tid"
+      toCol: "description.de"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "tid"
+          valueCol: "value"
+          file: "../transformed/tex_de.csv"
     -
       type: "addColumn"
       toCol: "slug.de"
@@ -125,18 +123,17 @@
           keyCol: "sid"
           valueCol: "value"
           file: "../transformed/vocabulary_nl.csv"
-# TODO commented out to avoid out of memory error of the csv mapper
-#    -
-#      type: "transformColumn"
-#      fromCol: "tid"
-#      toCol: "description.nl"
-#      valueTransformers:
-#        -
-#          type: "lookup"
-#          header: true
-#          keyCol: "tid"
-#          valueCol: "value"
-#          file: "../transformed/tex_nl.csv"
+    -
+      type: "transformColumn"
+      fromCol: "tid"
+      toCol: "description.nl"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "tid"
+          valueCol: "value"
+          file: "../transformed/tex_nl.csv"
     -
       type: "addColumn"
       toCol: "slug.nl"
@@ -168,18 +165,17 @@
           keyCol: "sid"
           valueCol: "value"
           file: "../transformed/vocabulary_fr.csv"
-# TODO commented out to avoid out of memory error of the csv mapper
-#    -
-#      type: "transformColumn"
-#      fromCol: "tid"
-#      toCol: "description.fr"
-#      valueTransformers:
-#        -
-#          type: "lookup"
-#          header: true
-#          keyCol: "tid"
-#          valueCol: "value"
-#          file: "../transformed/tex_fr.csv"
+    -
+      type: "transformColumn"
+      fromCol: "tid"
+      toCol: "description.fr"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "tid"
+          valueCol: "value"
+          file: "../transformed/tex_fr.csv"
     -
       type: "addColumn"
       toCol: "slug.fr"
@@ -211,18 +207,17 @@
           keyCol: "sid"
           valueCol: "value"
           file: "../transformed/vocabulary_it.csv"
-# TODO commented out to avoid out of memory error of the csv mapper
-#    -
-#      type: "transformColumn"
-#      fromCol: "tid"
-#      toCol: "description.it"
-#      valueTransformers:
-#        -
-#          type: "lookup"
-#          header: true
-#          keyCol: "tid"
-#          valueCol: "value"
-#          file: "../transformed/tex_it.csv"
+    -
+      type: "transformColumn"
+      fromCol: "tid"
+      toCol: "description.it"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "tid"
+          valueCol: "value"
+          file: "../transformed/tex_it.csv"
     -
       type: "addColumn"
       toCol: "slug.it"
@@ -254,18 +249,17 @@
           keyCol: "sid"
           valueCol: "value"
           file: "../transformed/vocabulary_es.csv"
-# TODO commented out to avoid out of memory error of the csv mapper
-#    -
-#      type: "transformColumn"
-#      fromCol: "tid"
-#      toCol: "description.es"
-#      valueTransformers:
-#        -
-#          type: "lookup"
-#          header: true
-#          keyCol: "tid"
-#          valueCol: "value"
-#          file: "../transformed/tex_es.csv"
+    -
+      type: "transformColumn"
+      fromCol: "tid"
+      toCol: "description.es"
+      valueTransformers:
+        -
+          type: "lookup"
+          header: true
+          keyCol: "tid"
+          valueCol: "value"
+          file: "../transformed/tex_es.csv"
     -
       type: "addColumn"
       toCol: "slug.es"

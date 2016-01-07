@@ -38,7 +38,7 @@ npm install sphere-category-sync
  * need "en" as language and ideally the following countries: EN,NL,FR,DE,IT,ES
  * create tax categories etc. with name "default", 
  * create the product type via impex.sphere.io using the product-type.json file in this directory
- * YOU DO NEED TO ADD PROJECT CREDENTIALS TO THE ./bin/6_sync_sphere_all.sh script! 
+ * YOU DO NEED TO SET YOUR CLIENT ID AND CREDENTIALS BEFORE RUNNING THE IMPORT SCRIPTS (see the comment in 6_sync_sphere_all.sh)
 
 ## run
 

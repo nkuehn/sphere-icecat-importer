@@ -3,7 +3,7 @@
 # TODO filter categories by "visible" (or enable import to take them as unpublished) (via csvgrep?)
 
 # map and enhance  categories as SPHERE import wants it.
-# TODO join descriptions in a separate step (memory limitation of the csv-mapper) or improve CSV mapper join efficiency
+# currently ca. 150 secs
 csv-mapper -m ../mapping_categories.yaml --inCsv ../transformed/category_en.csv  --outCsv ../generated/categories.4sphere.csv
 
 # create a minimal clone of the category tree that has no parents (for two-pass import to build tree)
