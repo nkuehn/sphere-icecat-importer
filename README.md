@@ -1,9 +1,9 @@
 # Icecat to SPHERE.IO demo data preprocessor
 
-the goal of this set of scripts is to generate a set of CSV files suitable for import into a SPHERE.IO project that contain a subset of the icecat.biz open catalog. 
+The goal of this set of scripts is to generate a set of CSV files suitable for import into a SPHERE.IO project that contain a subset of the icecat.biz open catalog. 
 
 The initial state will not yet create product types with "real" SPHERE.IO attributes but just require a generic product type. 
- 
+
 Next steps on the list (next to fixing the github issues and TODOs)
 
  1. implement category import based on halo's reimplementation (categories are a flat list here) once it can read the tree
@@ -16,25 +16,27 @@ Next steps on the list (next to fixing the github issues and TODOs)
  1. (maybe) generate product types from the metadata (will be 1:1 to categories) and import the Product attributes into real category-specific attributes. 
 
 ## caveats
+
  * the product variant grouping is not done via the "official" icecat 
 "Model" but via a self-generated slug from category, manufacturer and name.  This is because the icecat model name is only in the XML sheets and the current implementation does not download these. 
      
 ## prerequisites
 
-to run on Mac OS X you need 1-2 GB free RAM and the following prerequisites in an up-to-date version (install commands)
+To run on Mac OS X you need 1-2 GB free RAM and the following prerequisites in an up-to-date version (install commands)
 
 ```
 brew install python
+brew install parallel
 pip install csvkit
 brew install node
 npm install sphere-product-type-json-generator
-npm install csv-mapper
+npm install csv-mapper (min. version 1.0.9 to not run out of memory)
 npm install sphere-node-product-csv-sync
 npm install sphere-category-sync
-
 ```
 
 ## prepare a SPHERE project
+
  * need "en" as language and ideally the following countries: EN,NL,FR,DE,IT,ES
  * create tax categories etc. with name "default", 
  * create the product type via impex.sphere.io using the product-type.json file in this directory

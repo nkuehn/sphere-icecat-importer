@@ -21,6 +21,8 @@ curl -u $ICECATUSER:$ICECATPWD -o export_suppliers.txt http://data.icecat.biz/ex
 
 curl -u $ICECATUSER:$ICECATPWD -o on_market.export_urls_rich.txt.gz http://data.icecat.biz/export/freeurls/on_market.export_urls_rich.txt.gz
 
+curl -u $ICECATUSER:$ICECATPWD -o daily.export_urls_rich.txt.gz http://data.icecat.biz/export/freeurls/daily.export_urls_rich.txt.gz
+
 gunzip -f -v *.gz
 
 mkdir ../transformed
@@ -38,5 +40,6 @@ csvformat --tabs --encoding utf8 tex.txt.utf8 > ../transformed/tex.csv
 csvformat --tabs --encoding utf8 vocabulary.txt.utf8 > ../transformed/vocabulary.csv
 csvformat --tabs export_suppliers.txt > ../transformed/export_suppliers.csv
 csvformat --tabs on_market.export_urls_rich.txt > ../transformed/on_market.export_urls_rich.csv
+csvformat --tabs daily.export_urls_rich.txt > ../transformed/on_market.export_urls_rich.csv
 
 cd ../bin

@@ -10,3 +10,4 @@ bin/6_sync_sphere_all-MYPROJECT.sh
 node_modules/*
 on_market.4sphere.sorted.csv
 on_market.4sphere.notebooks.sorted.csv
+xmlDataCache

@@ -15,7 +15,7 @@ category-sync -parentBy externalId -p $CT_PROJECT --clientId $CT_CLIENT_ID --cli
 # unpublish:
 # product-csv-sync state --changeTo unpublish --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
 # delete:
-#ä product-csv-sync state --changeTo delete  --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
+# product-csv-sync state --changeTo delete  --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
 
 # dry run:
 # product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.notebooks.csv --matchBy sku --language en --allowRemovalOfVariants --publish --dryRun
