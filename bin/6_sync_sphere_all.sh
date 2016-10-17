@@ -24,8 +24,14 @@ category-sync -parentBy externalId -p $CT_PROJECT --clientId $CT_CLIENT_ID --cli
 # product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.csv --matchBy sku --language en --allowRemovalOfVariants --publish
 
 # live run (notebooks):
-product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.notebooks.csv --matchBy sku --language en --allowRemovalOfVariants --publish
+# product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.notebooks.csv --matchBy sku --language en --allowRemovalOfVariants --publish
 
+# live run (all INCLUDING THE HISTORIC ARCHIVE):
+product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/all_products.4sphere.csv --matchBy sku --language en --allowRemovalOfVariants --publish
 
 # once we can switch to sync / update we have to do a publish afterwards:? 
 # product-csv-sync state --changeTo publish
+
+# -just in case you need more heap (to be tested)
+# node –max-old-space-size=4096 ../node_modules/product-csv-sync/lib/run.js --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.notebooks.csv --matchBy sku --language en --allowRemovalOfVariants --publish
+
