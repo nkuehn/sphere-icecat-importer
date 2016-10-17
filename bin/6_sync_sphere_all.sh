@@ -13,9 +13,9 @@ category-sync -parentBy externalId -p $CT_PROJECT --clientId $CT_CLIENT_ID --cli
 
 # optionally: do a full delete and recreate of the products because real sync needs a large amount of local RAM
 # unpublish:
-# product-csv-sync state --changeTo unpublish --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
+product-csv-sync state --changeTo unpublish --continueOnProblems --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
 # delete:
-# product-csv-sync state --changeTo delete  --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
+product-csv-sync state --changeTo delete  --continueOnProblems --forceDelete  --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET
 
 # dry run:
 # product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.notebooks.csv --matchBy sku --language en --allowRemovalOfVariants --publish --dryRun
@@ -27,7 +27,7 @@ category-sync -parentBy externalId -p $CT_PROJECT --clientId $CT_CLIENT_ID --cli
 # product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --csv ../generated/products.4sphere.notebooks.csv --matchBy sku --language en --allowRemovalOfVariants --publish
 
 # live run (all INCLUDING THE HISTORIC ARCHIVE, IF ZIPPED):
-product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --zip ../generated/all_products.4sphere.zip --matchBy sku --language en --publish
+product-csv-sync import --projectKey $CT_PROJECT --clientId $CT_CLIENT_ID --clientSecret $CT_CLIENT_SECRET --zip ../generated/all_products.4sphere.zip --matchBy sku --language en --publish --continueOnProblems 
 
 # once we can switch to sync / update we have to do a publish afterwards:? 
 # product-csv-sync state --changeTo publish
