@@ -27,6 +27,7 @@ To run on Mac OS X you need 1-2 GB free RAM and the following prerequisites in a
 ```
 brew install python
 brew install parallel
+brew install rename
 pip install csvkit
 brew install node
 npm install sphere-product-type-json-generator
